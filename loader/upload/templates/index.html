@@ -1,0 +1,19 @@
+{% if user.is_authenticated %}
+<li>Вы вошли в систему как: {{ user.get_username }}</li>
+<li><a href="{% url 'logout'%}?next={{request.path}}">Выйти</a></li> 
+
+<li>Выберете один или несколько файлов:</li>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+   {{ form.as_p }}
+  <button type="submit">Загрузить</button>
+</form>
+
+{% if file_instance %}
+  <h3>Файлы загружены!</h3>
+{% endif %}
+
+{% else %}
+ <h3>Данная страница доступна только для авторизованных пользователей!</h3>
+ <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+{% endif %}

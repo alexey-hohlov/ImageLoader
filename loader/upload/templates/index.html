@@ -15,5 +15,5 @@
 
 {% else %}
  <h3>Данная страница доступна только для авторизованных пользователей!</h3>
- <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+ <li><a href="{% url 'login'%}?next={{request.path}}">Войти</a></li>
 {% endif %}
